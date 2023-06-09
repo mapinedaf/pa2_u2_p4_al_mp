@@ -1,0 +1,32 @@
+Un programa debe tener al menos 3 capas. controller, service y repository
+el repository también es conocido como dao (Data transfer object) y se conecta con la base de datos
+
+La aplicación es spring funciona con java y la base de datos puede ser cualquier otro tipo de modelo ie mysql postgress etc
+para comunicar se necesita un interprete para que puedan comunicarse. Por ejemplo una computadora necesita un driver
+para hablar con una impresora. 
+de igual forma una app java necesita usar un driver para conectarse a una base de datos. 
+El driver es una dependencia que se registra en el archivo pom.xml
+
+Hace muchos años existía un problema con las bases de datos relacionales. El paradigma entidad relacion es intrínsecamente
+incompatible con el paradigma orientado a objetos. Existía el jdbc (java database conection) y con 
+sentencias sql desde el programa. 
+
+De ahí nace el ORM (Object relational mapping), vincular objetos con tablas. Se puede mapear todo elemento de base de datos.
+Existe un conjunto de especificaciones para llegar a esto. Uno de los mas conocidos es el JPA (Jakarta persistance API)
+Existe un conjunto de ORMs en el mercado, entre estos esta hibernate, Eclipse link, Spring data 
+
+hibernate pasa a ser un traductor. Se encarga de traducir codigo java a la estructura de la base de datos. Se dice que es 
+independiente. 
+
+
+aplication.properties es el archivo donde se congifura toda la aplicacion incluyendo las conexiones de las bases de datos  
+
+pa2almp Nombre de la base de datos
+
+estu_(valor) "estu_ " es un identidicador de tabla
+
+en cada linea se pone clave-valor, la clave va a ser un atributo fijo 
+
+
+
+
