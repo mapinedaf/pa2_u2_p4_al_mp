@@ -1,7 +1,7 @@
 Un programa debe tener al menos 3 capas. controller, service y repository
-el repository también es conocido como dao (Data transfer object) y se conecta con la base de datos
+el repositorio también es conocido como dao (Data transfer object) y se conecta con la base de datos
 
-La aplicación es spring funciona con java y la base de datos puede ser cualquier otro tipo de modelo ie mysql postgress etc
+La aplicación es spring funciona con java y la base de datos puede ser cualquier otro tipo de modelo ie mysql postgress etc (dialecto)
 para comunicar se necesita un interprete para que puedan comunicarse. Por ejemplo una computadora necesita un driver
 para hablar con una impresora. 
 de igual forma una app java necesita usar un driver para conectarse a una base de datos. 
@@ -19,13 +19,71 @@ hibernate pasa a ser un traductor. Se encarga de traducir codigo java a la estru
 independiente. 
 
 
-aplication.properties es el archivo donde se congifura toda la aplicacion incluyendo las conexiones de las bases de datos  
+aplication.properties es el archivo donde se configura toda la aplicación incluyendo las conexiones de las bases de datos  
 
 pa2almp Nombre de la base de datos
 
-estu_(valor) "estu_ " es un identidicador de tabla
+estu_(valor) "estu_ " es un identificador de tabla
 
 en cada linea se pone clave-valor, la clave va a ser un atributo fijo 
+
+DDL auto none que el modelo que esta en la aplicacion no cree objetos en la base de datos. 
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+ANOTACIONES DE JAKARTA PERSISTANCE 
+
+Un objeto representa una tabla. se le dice mediante anotacion @Table
+
+    @Table(name="estudiante")
+    @Table(name="estudiante", schema="") Para cambiar el esquema 
+    @Entity
+
+Cuando se mapea una tabla a traves de objetos, ese objeto pasa a ser entidad, la clase que mapeo la tabla
+Una tabla esta compuesta de columnas (atributos de la clase) se maneja
+con la anotacion @Column 
+
+@Column(name = "estu_nombre")
+
+Si ddl auto esta en none y el nombre del atributo y la columna no 
+son los mismos, da error 
+
+@Id identifica la clave primaria
+
+El crud basico debe buscar y eliminar por un identificador 
+
+Existe una interfaz que permite comuinicarse con la base de datos
+ENTITY MANAGER manejador de entidades. esta interfaz es el componente
+principal para interactuar con la base de datos. 
+El driver solo permite la coneccion desde la aplicacion a la 
+base de datos, no es bidireccional. 
+
+NO LLEVA @Autowired
+El entity manager debe tener una anotacion @PersistenceContext
+y la clase repository debe tener la anotacion @Transactional
+
+Para el crud existen metodos predefinidos. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
