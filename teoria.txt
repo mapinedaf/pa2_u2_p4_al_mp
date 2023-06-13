@@ -65,14 +65,25 @@ y la clase repository debe tener la anotacion @Transactional
 Para el crud existen metodos predefinidos. 
 
 
+--------------------------taller 14-------------------------------
 
+buena practica usar un valor secuencial como primary key en las 
+tablas. 
 
+Una secuencia en base de datos es asignar un valor secuencial a 
+un registro de una base de datos. Esta secuencia no la visualiza
+el usuario. Es un valor que se usa para la integridad referencial
 
+para la secuencia 
+@SequenceGenerator(name = "nombre_generador",sequenceName = "sec_estudiante",allocationSize = 1)
 
+para indicar que es un valor generado 
+@GeneratedValue(generator = "nombre_generador",strategy = GenerationType.SEQUENCE )
 
+Estas anotaciones pueden estar en cualquier orden mientras esten 
+arriba del valor secuencial 
 
-
-
+select nextval ('sec_estudiante')
 
 
 
