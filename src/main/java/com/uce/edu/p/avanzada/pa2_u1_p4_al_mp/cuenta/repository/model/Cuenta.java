@@ -40,7 +40,7 @@ public class Cuenta {
     private Character tipo;
     
     @Column(name="cuenta_fecha_apertura")
-    private String fechaApertura;
+    private LocalDate fechaApertura;
     
     @Column(name="cuenta_saldo")
     private BigDecimal saldo;

@@ -6,11 +6,11 @@ import java.util.Random;
 import java.util.function.BiFunction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.cuenta.repository.CuentaRepository;
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.cuenta.repository.model.Cuenta;
-
 
 @Service
 public class CuentaServiceImpl implements CuentaService {
@@ -18,27 +18,30 @@ public class CuentaServiceImpl implements CuentaService {
     @Autowired
     private CuentaRepository cuentaRepository;
 
+    @Qualifier("par")
+    @Autowired
+    private CuentaAbonoService servicePar;
+
+    @Qualifier("impar")
+    @Autowired
+    private CuentaAbonoService serviceImpar;
+
     @Override
-    public void abrirCuenta(String cedula, Character tipo, BigDecimal saldo)  {
-        
+    public void abrirCuenta(String cedula, Character tipo, BigDecimal saldo) {
+
         LocalDate fecha = LocalDate.now();
 
-        int dia = Integer.parseInt(fecha.toString().split("-")[2]);
+        CuentaAbonoService service = fecha.getDayOfMonth() % 2 == 0 ? servicePar : serviceImpar;
 
-        double descuento = 1;
-        
-        if(dia % 2 ==0 )
-            descuento = 1.05;
-        
-        saldo = saldo.multiply(BigDecimal.valueOf(descuento));
+        saldo = service.abonoPorDia(saldo);
 
         Cuenta cuenta = Cuenta.builder()
-                        .saldo(saldo)
-                        .cedulaPropietario(cedula)
-                        .tipo(tipo)
-                        .fechaApertura(fecha.toString())
-                        .numero(new Random().nextInt()+"")
-                        .build();
+                .saldo(saldo)
+                .cedulaPropietario(cedula)
+                .tipo(tipo)
+                .fechaApertura(fecha)
+                .numero(Math.abs(new Random().nextInt()) + "")
+                .build();
 
         cuentaRepository.insertar(cuenta);
 
@@ -58,5 +61,5 @@ public class CuentaServiceImpl implements CuentaService {
     public void eliminarCuenta(Integer id) {
         this.cuentaRepository.borrar(id);
     }
-    
+
 }
