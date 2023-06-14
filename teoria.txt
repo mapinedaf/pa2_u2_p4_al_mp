@@ -86,6 +86,47 @@ arriba del valor secuencial
 select nextval ('sec_estudiante')
 
 
+-------------------------------------------Taller 15 y 16 -----------------------------------
+Los sistemas empresariales no tienen una sola entidad, estas pueden estar
+relacionadas.
+
+Relacion one to one: Un registro esta relacionado con un solo registro
+este tipo de relacion se puede ver como dividir una tabla por un critero
+ej 
+
+Sea la tabla
+Empleado{nombre, apellido, cedula, sueldo, cargo, horario}
+
+se puede agrupar como
+
+Ciudadano{nombre, apellido, cedula}
+Empleado{sueldo, cargo, horario}
+
+si una sola tabla tiene muchos campos nulos se la divide. 
+
+otro concepto importante es que siemprew hay una tabla principal. se puede 
+diferenciar considerando que tabla no puede dejar de existir
+
+ej ciudadano puede existir sin empleado pero empleado no puede existir sin
+ciudadano, por lo tanto ciudadano es la tabla principal. 
+
+la tabla principal es importante porque su primary key baja como foreing key
+a la tabla secundaria. Eso obedece a lo siguiente si no tengo un dato pk 
+no rengo un fk y por lo tanto el registro no puede existir en la tabla
+secundaria. (poner null es un error)
+
+PARA PRUEBAS Y EXAMENES
+ddl-auto = update compara el esquema de la base datos con lo que esta
+mapeado en la aplicacion y si no coincide modifica la base para que sirva
+
+Cuando no se da el nombre de @Table la tablña soje el mismo nombre de la clase
+
+Si yo tengo una relacion 1 a 1 el ciudadano tiene una referencia a 
+una referencia hacia empleado 
+
+
+
+
 
 
 
