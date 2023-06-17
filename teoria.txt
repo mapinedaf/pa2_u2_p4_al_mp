@@ -124,6 +124,28 @@ Cuando no se da el nombre de @Table la tablña soje el mismo nombre de la clase
 Si yo tengo una relacion 1 a 1 el ciudadano tiene una referencia a 
 una referencia hacia empleado 
 
+----------------------------------------------taller 17
+
+@OneToOne(cascade = CascadeType.ALL) el momento que se va a insertar el empleado la alicacion inserta en cascada a ese 
+atributo. se puede especificar si se ejecuta en cascad el create, read PERSIST, update  MERGE , delete REMOVE . ALL para todo
+se debe var la confircacion del sistema para decidir que service usar, el de la tabla principal o la secundaria. 
+Lo mas comun es que no se inserten ciudadanos si no que se busque en una base ya exitente y crear ls empleados con esa informacion. 
+
+lo correcto es hacer los set en la capa service, no la controller. 
+
+
+@OneToMany(mappedBy = "hotel" )
+relacon uno a muchos, un registro en una tabla puede tener muchos registros en otra enlazados por una foreing key
+un ejemplo es fatura:detalle hotel:habitacion 
+
+un hotel pude tener muchas habitaciones pero una habitacion solo puede existir en un hotel. 
+
+si un atributo no va a realizar operaciones matematicas deberia ser un string.
+
+
+
+
+
 
 
 

@@ -28,14 +28,17 @@ public class Pa2U1P4AlMpApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Empleado empleado = Empleado.builder().cargo("admin").build();
-		eService.agregar(empleado);
 		Ciudadano ciudadano = Ciudadano.builder().nombre("jose").build();
 
+		
 		ciudadano.setEmpleado(empleado);
 		empleado.setCiudadano(ciudadano);
-
-		cService.agregar(ciudadano);
 		
+		cService.agregar(ciudadano);
+		Ciudadano ciudadano2 = Ciudadano.builder().nombre("alguien").empleado(empleado).build();
+		empleado.setCiudadano(ciudadano2);
+		eService.actualizarEmpleado(empleado);;
+
 
 		
 	}

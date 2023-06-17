@@ -1,5 +1,6 @@
 package com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +40,6 @@ public class Ciudadano {
     @Column(name = "ciud_cedula")
     private String cedula;
 
-    @OneToOne(mappedBy = "ciudadano")
+    @OneToOne(mappedBy = "ciudadano", cascade = CascadeType.ALL)
     private Empleado empleado; //Un ciuidadano tiene un empleado 
 }
