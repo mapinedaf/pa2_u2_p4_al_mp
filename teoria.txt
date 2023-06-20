@@ -145,6 +145,12 @@ si un atributo no va a realizar operaciones matematicas deberia ser un string.
 
 
 ---------------------------------taller 18
+muchos a muchos. la tabla principal no es mandatoria. 
+se usan tablas de rompimiento
+CascadeType.All se ejecuta en cascada la accion 
+
+
+
 
 
 
