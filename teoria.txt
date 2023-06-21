@@ -149,7 +149,9 @@ muchos a muchos. la tabla principal no es mandatoria.
 se usan tablas de rompimiento
 CascadeType.All se ejecuta en cascada la accion 
 
+----------------------------------taller19
 
+QUERY TYPES JPA
 
 
 

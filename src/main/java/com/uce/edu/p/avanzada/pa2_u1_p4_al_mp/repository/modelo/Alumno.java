@@ -1,15 +1,14 @@
 package com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo;
 
-import java.util.Set;
 
-import jakarta.persistence.CascadeType;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,29 +18,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+
+
+
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
+
 @Entity
-@Table(name="autor")
-public class Autor {
+@Table(name="alumno")
+public class Alumno {
     @Id
-    @GeneratedValue(generator = "sec_autor", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "sec_autor", sequenceName = "sec_autor", allocationSize = 1)
-    @Column(name = "aut_id")
+    @Column(name="alum_id")
+    @GeneratedValue(generator = "sec_alumno", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "sec_alumno", sequenceName = "sec_alumno", allocationSize = 1)
     private Integer id;
-    @Column(name= "aut_nombre")
+    @Column(name="alum_nombre")
     private String nombre;
-    @Column(name= "aut_apellido")
-    private String apellido;
     
-    @ManyToMany(mappedBy = "autores",cascade = CascadeType.ALL)
-    private Set<Libro> libros;
-
-
-
+    //Debo tener un atributo que represente el muchos de matricula
+    
+    @OneToMany(mappedBy = "alumno")
+    private List<Matricula>matriculas;
 
 }
