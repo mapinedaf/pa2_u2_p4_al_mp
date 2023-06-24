@@ -153,15 +153,86 @@ CascadeType.All se ejecuta en cascada la accion
 
 QUERY TYPES JPA
 
+ayuda a construir los querys para la informacion de la tabla
+dentro de jackarta existen tres tipos de querys
+
+1. query
+    JPQL(Jackarta persistence query language)
+    lenguaje de consulta a la base ded datos orientada a 
+    objetos en JPA
+
+    Cuando hablamos de sql es un lenguaje de consulta estandar
+    select column from table where condition
+
+    JPQL es otro lenguage pero orientado a objetos, esta
+    basado en sql y tienen una semejancia muy alta. se mantiene
+    todo lo de sql pero se tabaja con atributos y clases en lugar
+    de columnas y tablas. 
+
+    Si quiero hacer referencia a la columna de la tabla lo accedo
+    como un atributo. 
+    El beneficio es que se abstrae y se independiza de la base 
+    de datos. si hay un cambio de base es transparente con el usuario
+
+    Hibernate transforma de jpql a sql
+
+    tiene una sub division
+
+    1.1 Typed queries
+        darle un tipo al query
+    
+    1.2 NamedQuery
+        darle un nombre 
+
+2. Native query
+
+    Realizar queries con sql puro. con jpql hibernate tiene 
+    que hacer una transformacion. si la consulta es extensa
+    la transformacion se vuelve pesada. cuando se presentan
+    estos escenarios es mejor usar un native query. Se 
+    obtiene mejor rendimiento pero se pierde independencia.
+    
+
+3. Criteria api query
+
+    necesitamos hacer consultas dinamicas. por ejemplo dep-
+    endiendo del dia se necesita modificar el query, par 
+    por nombre, impar por apellido. el resto de condiciones 
+    son las mismas. basado en metodos se construye el query
+    
+
+--------------------------taller 20 -------------------------
+
+Typed query permite especificar el tipo de retorno a tener. ej
+si hago select a estudiante me retorna un estuciante. se 
+RECOMIENDA usar typed quety para evitar errores de casteo. 
 
 
+named query. que pasaria si dentro del sistema hay varias 
+paginas que busca el estudiante por su cedula? en el mejor 
+de los casos tengo un solo metodo, pero puede suceder que 
+cuando tenga un codigo muy grande se repitan las querys.
+Esta mal tener el mismo sql en varios repositories CODIGO
+DUPLICADO. jpa tiene named query para construir un query
+y darle nombre. 
 
+se le da un nombre (ALIAS) a un query
+(select.......) -> query empleado 
+y luego solo llamo al nombre. esto permite la centralizacion
+del codigo. 
+Otro beneficio es el mantenimiento. si no existiera el named
+query seria necesario modificar todos los quetys iguales. 
+pero si esta centralizado y solo se llama al query por el
+nombre podemos solo modificar el named query y se cambia todo
 
+EN LA CONSOLA SIEMPRE SE IMPRIME EL sql 
 
-
-
-
-
+el single reslult y el list result se utiliza dependiendo de
+las necesidades del sistema. si yo estoy seguyro que una 
+funcionalidad debe retornarme un solo registro, y si retorna 
+mas de uno es uyn error de base, se usa el single result. 
+el get result list se usa cuando no sabemos si retorna un solo
+valor. 
 
 
 
