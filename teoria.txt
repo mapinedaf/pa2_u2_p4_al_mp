@@ -235,7 +235,10 @@ el get result list se usa cuando no sabemos si retorna un solo
 valor. 
 
 
+-------------------taller 21 -------------------------------
 
+Named query: se guardan en un lugar centraizado, la entidad
+se elige la entidad a la que pertene el query. 
 
 
 

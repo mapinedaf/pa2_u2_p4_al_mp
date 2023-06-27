@@ -22,4 +22,5 @@ public interface EstudianteRepository {
     public Estudiante seleccionarPorApellidoYNombew(String apellido,String nombre);
 
     public Estudiante seeleccionarPorApellidoTyped(String apellido);
+    public Estudiante seeleccionarPorApellidoNamed(String apellido);
 }

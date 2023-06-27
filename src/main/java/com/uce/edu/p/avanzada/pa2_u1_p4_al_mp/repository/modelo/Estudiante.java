@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,8 @@ import lombok.ToString;
 // Configuracion DDL
 @Table(name = "estudiante")
 @Entity
+
+@NamedQuery(name="Estudiante.buscaPorApellido",query="SELECT e FROM Estudiante e WHERE e.apellido = :datoApellido")
 public class Estudiante {
 
     @GeneratedValue(generator = "sec_estudiante", strategy = GenerationType.SEQUENCE)
