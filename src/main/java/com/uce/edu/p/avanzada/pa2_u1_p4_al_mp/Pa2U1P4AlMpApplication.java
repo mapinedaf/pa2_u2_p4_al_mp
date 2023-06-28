@@ -7,14 +7,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.Estudiante;
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.Mesa;
+import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.service.EstudianteService;
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.service.MesaService;
 
 @SpringBootApplication
 public class Pa2U1P4AlMpApplication implements CommandLineRunner {
 
 	@Autowired
-	MesaService mesaService;
+	EstudianteService estudianteService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P4AlMpApplication.class, args);
@@ -23,58 +25,31 @@ public class Pa2U1P4AlMpApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		/*
-		 * mesaService.guardar(
-		 * Mesa.builder()
-		 * .fabricante("Fabri Mesa")
-		 * .material("Caoba")
-		 * .paisOrigen("Angola")
-		 * .precio(BigDecimal.valueOf(100))
-		 * .build());
-		 * 
-		 * mesaService.guardar(
-		 * Mesa.builder()
-		 * .fabricante("Black Mesa")
-		 * .material("Ebano")
-		 * .paisOrigen("Peru")
-		 * .precio(BigDecimal.valueOf(100))
-		 * .build());
-		 * mesaService.guardar(
-		 * Mesa.builder()
-		 * .fabricante("Mesa Inc")
-		 * .material("Ebano")
-		 * .paisOrigen("Venezuela")
-		 * .precio(BigDecimal.valueOf(100))
-		 * .build());
-		 * mesaService.guardar(
-		 * Mesa.builder()
-		 * .fabricante("Mi Mesa")
-		 * .material("Caoba")
-		 * .paisOrigen("Mexico")
-		 * .precio(BigDecimal.valueOf(100))
-		 * .build());
-		 */
+		/* 
+		estudianteService.agregar(
+			Estudiante.builder()
+			.cedula("123332")
+			.nombre("Juanito")
+			.apellido("Arcoiris")
+			.build()
+			);
+			*/
+		System.out.println("Named Typed query");
+		System.out.println(estudianteService.busarPorApellidoNamed("Arcoiris"));
+		System.out.println("Named query");
+		System.out.println(estudianteService.buscarPorApellidoNamedQuery("Arcoiris"));
 
-		System.out.println("-------------------------------------------------------------------------------------");
-		System.out.println("Query Single Result");
-		System.out.println(mesaService.buscarPorFabricante("Black Mesa"));
-		System.out.println("-------------------------------------------------------------------------------------");
+		System.out.println("Native Query");
+		System.out.println(estudianteService.buscarPorApellidoNativeQuery("Arcoiris"));
 
-		System.out.println("-------------------------------------------------------------------------------------");
-		System.out.println("Typed Query Single Result");
-		System.out.println(mesaService.buscarPorPais("Mexico"));
-		System.out.println("-------------------------------------------------------------------------------------");
+		System.out.println("Native named query");
+		System.out.println(estudianteService.buscarPorApellidoNativeQueryNamed("Arcoiris"));
 
-		System.out.println("-------------------------------------------------------------------------------------");
-		System.out.println("Query List Result");
-		System.out.println(mesaService.buscarListaPorMaterial("Ebano"));
-		System.out.println("-------------------------------------------------------------------------------------");
+		System.out.println(" named query nombre");
+		System.out.println(estudianteService.busarPorNombreNamed("Juanito"));
 
-		System.out.println("-------------------------------------------------------------------------------------");
-		System.out.println("Typed Query List Result");
-		System.out.println(mesaService.buscarListaPorPrecio(BigDecimal.valueOf(100)));
-		System.out.println("-------------------------------------------------------------------------------------");
-
+		System.out.println("namd native query nombre");
+		System.out.println(estudianteService.buscarPorNombreNativeQueryNamed("Juanito"));
 	}
 
 }

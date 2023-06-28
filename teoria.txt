@@ -235,10 +235,28 @@ el get result list se usa cuando no sabemos si retorna un solo
 valor. 
 
 
--------------------taller 21 -------------------------------
+-------------------taller 21 y 22 -------------------------------
 
 Named query: se guardan en un lugar centraizado, la entidad
 se elige la entidad a la que pertene el query. 
+.createNamedQuery Metodo para crear un named query
+
+
+
+NATIVE QUERY para querys muy complejos, mas de 4 tablas, muchas
+condiciones, muchos datos. Construimos el acceso a datos con sql 
+puro, se evita la conversion de jpql a sql. pero nos arraiga a 
+la sintaxis de una base de datos. no se maneeeja objetos sieempre 
+hay que hacer cast. createNativeQuery solo reqresa tipo query
+
+Se puede declarar una native query como typed query con un artificio
+creear con una combinacion de named querys
+
+siempre se debee eespeecificar la clase de resultado
+
+
+CRITERIA API QUERY: no usa nomenclatura jpql o sl. se usa metodos 
+para construir la sentencia 
 
 
 
