@@ -61,4 +61,7 @@ public class Estudiante {
     @Column(name = "estu_apellido")
     private String apellido;
 
+    @Column(name = "estu_peso")
+    private Double peso;
+
 }

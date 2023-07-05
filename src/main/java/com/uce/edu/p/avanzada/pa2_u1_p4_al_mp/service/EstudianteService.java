@@ -19,7 +19,7 @@ public interface EstudianteService {
     public List<Estudiante> reportePorApellido(String apellido);
 
     public Estudiante buscarPorApellidoYNombre(String apellido, String nombre);
-    
+
     public Estudiante buscarPorApellidoTyped(String apellido);
 
     public Estudiante busarPorApellidoNamed(String apellido);
@@ -34,4 +34,9 @@ public interface EstudianteService {
 
     public Estudiante buscarPorNombreNativeQueryNamed(String nombre);
 
+    public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso);
+
+    public int eliminarPorNombre(String nombre);
+
+    public int actualizarPorApellido(String nombrem, String apellido);
 }

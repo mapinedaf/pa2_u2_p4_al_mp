@@ -25,31 +25,32 @@ public class Pa2U1P4AlMpApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		/* 
-		estudianteService.agregar(
-			Estudiante.builder()
-			.cedula("123332")
-			.nombre("Juanito")
-			.apellido("Arcoiris")
-			.build()
-			);
-			*/
-		System.out.println("Named Typed query");
-		System.out.println(estudianteService.busarPorApellidoNamed("Arcoiris"));
-		System.out.println("Named query");
-		System.out.println(estudianteService.buscarPorApellidoNamedQuery("Arcoiris"));
+		Estudiante estudiante = Estudiante.builder()
+				.cedula("123098")
+				.nombre("Dani")
+				.apellido("Milagro")
+				.peso(Double.valueOf(110))
+				.build();
 
-		System.out.println("Native Query");
-		System.out.println(estudianteService.buscarPorApellidoNativeQuery("Arcoiris"));
+		Estudiante estudiante2 = Estudiante.builder()
+				.cedula("123548")
+				.nombre("David")
+				.apellido("Noboa")
+				.peso(Double.valueOf(90))
+				.build();
 
-		System.out.println("Native named query");
-		System.out.println(estudianteService.buscarPorApellidoNativeQueryNamed("Arcoiris"));
+		// estudianteService.agregar(estudiante);
 
-		System.out.println(" named query nombre");
-		System.out.println(estudianteService.busarPorNombreNamed("Juanito"));
+		// estudianteService.agregar(estudiante2);
 
-		System.out.println("namd native query nombre");
-		System.out.println(estudianteService.buscarPorNombreNativeQueryNamed("Juanito"));
+		System.out.println(estudianteService.buscarEstudianteDinamico("Dani", "Milagro", 110.0));
+
+		System.out.println(estudianteService.buscarEstudianteDinamico("David", "Noboa", 90.0));
+
+		System.out.println(estudianteService.eliminarPorNombre("Dani"));
+
+		System.out.println(estudianteService.actualizarPorApellido("Kevin", "Noboa"));
+
 	}
 
 }
