@@ -1,5 +1,7 @@
 package com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Random;
 
@@ -44,4 +46,17 @@ public class SitioDeInteresServiceImpl implements SitioDeInteresService {
         return this.sitioDeInteresRepository.leerRecomendados(calificacion, estaLluviendo);
     }
 
+    @Override
+    public int actualizarHorarios(LocalTime horaAperturaOld, LocalTime horaAperturaNew) {
+        return this.sitioDeInteresRepository.actualizarHorarios(horaAperturaOld,horaAperturaNew);
+    }
+
+    @Override
+    public int borrarPorCategoria(String categoria) {
+        return this.sitioDeInteresRepository.borrarPorCategoria(categoria);
+    }
+
+
+
+    
 }

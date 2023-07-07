@@ -1,5 +1,7 @@
 package com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Random;
 
@@ -10,6 +12,7 @@ import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.Estudiante;
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.SitioDeInteres;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -65,6 +68,28 @@ public class SitioDeInteresRepositoryImpl implements SitioDeInteresRepository {
 
         TypedQuery<SitioDeInteres> finalQuery = this.entityManager.createQuery(query);
         return finalQuery.getResultList();
+    }
+
+    @Override
+    public int actualizarHorarios(LocalTime horaAperturaOld, LocalTime horaAperturaNew) {
+        Query query = this.entityManager.createQuery("UPDATE SitioDeInteres s SET s.horaApertura = :datoHoraNew WHERE s.horaApertura <= :datoHoraOld");
+              query.setParameter("datoHoraOld", horaAperturaOld);
+              query.setParameter("datoHoraNew", horaAperturaNew);
+
+              return  query.executeUpdate();
+    
+    }
+
+    @Override
+    public int borrarPorCategoria( String categoria) {
+     
+     
+        Query query = this.entityManager.createQuery("DELETE SitioDeInteres s WHERE s.categoria = :datoCategoria");
+        query.setParameter("datoCategoria", categoria);
+
+        return query.executeUpdate();
+    
+    
     }
     
 }

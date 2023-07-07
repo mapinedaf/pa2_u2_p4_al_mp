@@ -74,10 +74,14 @@ public class Pa2U1P4AlMpApplication implements CommandLineRunner {
 		this.sitioDeInteresService.registrarSitio(sitio4);
 	*/
 
-		System.out.println("Recomienda sitios co mas de 4.5 de calificacion y si esta lluviendo solo los que no son al aire libre");
+		//System.out.println("Recomienda sitios co mas de 4.5 de calificacion y si esta lluviendo solo los que no son al aire libre");
 
 
-		System.out.println(this.sitioDeInteresService.reporteSitiosRecomendados());
+		//System.out.println(this.sitioDeInteresService.reporteSitiosRecomendados());
+
+		System.out.println(sitioDeInteresService.actualizarHorarios(LocalTime.of(6,0), LocalTime.of(9,0)));
+
+		System.out.println(sitioDeInteresService.borrarPorCategoria("mirador"));
 		
 	}
 

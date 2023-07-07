@@ -1,5 +1,7 @@
 package com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.SitioDeInteres;
@@ -16,5 +18,9 @@ public interface SitioDeInteresRepository {
     public void borrar(SitioDeInteres sitioDeInteres);
 
     public List<SitioDeInteres> leerRecomendados(double calificacion, boolean     estaLluviendo);
+
+    public int  actualizarHorarios(LocalTime horaAperturaOld, LocalTime horaAperturaNew );
+
+    public int borrarPorCategoria( String categoria);
 
 }
