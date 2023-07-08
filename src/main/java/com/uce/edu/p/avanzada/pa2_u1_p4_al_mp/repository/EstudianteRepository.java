@@ -3,6 +3,7 @@ package com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository;
 import java.util.List;
 
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.Estudiante;
+import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.dto.EstudianteDTO;
 
 public interface EstudianteRepository {
 
@@ -42,4 +43,6 @@ public interface EstudianteRepository {
     public int eliminarPorNombre(String nombre);
 
     public int actualizarPorApellido(String nombrem, String apellido);
+
+    public List<EstudianteDTO> seleccionarTodosDTO();
 }

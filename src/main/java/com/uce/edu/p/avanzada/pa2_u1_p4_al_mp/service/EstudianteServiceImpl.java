@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.EstudianteRepository;
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.Estudiante;
+import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.dto.EstudianteDTO;
 
 @Service 
 public class EstudianteServiceImpl implements EstudianteService{
@@ -98,6 +99,11 @@ public class EstudianteServiceImpl implements EstudianteService{
     @Override
     public int actualizarPorApellido(String nombrem, String apellido) {
        return this.estudianteRepository.actualizarPorApellido(nombrem, apellido);
+    }
+
+    @Override
+    public List<EstudianteDTO> buscarTodoDTO() {
+        return this.estudianteRepository.seleccionarTodosDTO();
     }
 
     

@@ -259,9 +259,65 @@ CRITERIA API QUERY: no usa nomenclatura jpql o sl. se usa metodos
 para construir la sentencia 
 
 
+------------------- taller 23 --------------------------------------
 
 
+cuando hablamos de consultas a bases de datos, existen escenarios en los
+que una tabla puede llegar a tener cientos de campos. no es lo mismo un select
+que retorna 1 o dos columnas con uno que traiga cien columnas. 
 
+Que pasa si necesito un reporte con unicamente nombre y apellido? hasta ahora
+se ha visto como retornar todos los campos y seria ineficiente retornar 
+las 100 columnas. 
+
+Para poder soluciuonar este problema existe un concepto y patron de diseño
+llamado como DTO data transfer object. el dto permite transmitir datos 
+entre capas, solo los datos que necesito. 
+Este dto esta ubicado en la capa repository, en la subcapa modelo. 
+
+para nosotros construir un dto de estudiante usamos la nomenclatura 
+EstudianteDTO
+
+taller 24---------------------------------------------------------
+Cuando se hace un constructor explicito en una clase es buena pratica tambien 
+definir de forma explisita el constructor por defecto, ya que algunas veces no 
+se puede hacer inyeccion sin el constructor por defecto 
+
+
+Cuando se pasa dto entre capas se debe implementar la interfaz serializable
+
+DTO no es una entidad, en las consultas se hace referencia a las entidades. 
+
+se referencia el paquete completo 
+String jpql ="SELECT NEW com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.dto.EstudianteDTO(e.nombre,e.apellido) FROM Estudiante e";
+
+el sql se ejecuta solo con los campos requeridos. 
+
+
+LazyInitializationException. por defecto cuando consultamos una entidad que tiene una Relacion
+no trae la informacion de la relacion. podriamos pensqr que es loqgico que si  consultamos un
+hotel traiga tambien la lista de habitaciones que es una relacion pero no es asignar
+hay  que declararlo de forma explicita que me traiga los datos. 
+@OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER)
+EAGER siempre trae todos los elementos
+
+Para ser mas edicientes se usa LAZY carga peresosa o carga bajo demanda, nos trae las habitaciones solo cuando
+las necesitamos 
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
+
+
+Hay que especificar cuando se usa 
+        @Override
+    public Hotel seleccionarPorNumero(Integer id) {
+
+        Hotel hotel =  this.entityManager.find(Hotel.class, id);
+
+        System.out.println(hotel.getHabitaciones().size());
+
+        return hotel;
+    }
+
+La señal no solo es el size, puede ser ocupar cualquier dato en el repos de esa relacion
 
 
 

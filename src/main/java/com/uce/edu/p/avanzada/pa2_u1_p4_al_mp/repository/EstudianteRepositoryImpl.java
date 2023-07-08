@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.Estudiante;
+import com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.dto.EstudianteDTO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -211,17 +212,28 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
     @Override
     public int actualizarPorApellido(String nombre, String apellido) {
-        //sql
-        //UPDATE estudiante SET estu_nombre = ? WHERE  estu_apellido = ?
+        // sql
+        // UPDATE estudiante SET estu_nombre = ? WHERE estu_apellido = ?
 
-        //jpql
-        //UPDATE Estudiante e SET e.nombre = :datoNombre WHERE e.apellido = :datoApellido
-        Query query = this.entityManager.createQuery("UPDATE Estudiante e SET e.nombre = :datoNombre WHERE e.apellido = :datoApellido");
+        // jpql
+        // UPDATE Estudiante e SET e.nombre = :datoNombre WHERE e.apellido =
+        // :datoApellido
+        Query query = this.entityManager
+                .createQuery("UPDATE Estudiante e SET e.nombre = :datoNombre WHERE e.apellido = :datoApellido");
 
         query.setParameter("datoApellido", apellido);
         query.setParameter("datoNombre", nombre);
 
         return query.executeUpdate();
+    }
+
+    @Override
+    public List<EstudianteDTO> seleccionarTodosDTO() {
+
+        String jpql = "SELECT NEW com.uce.edu.p.avanzada.pa2_u1_p4_al_mp.repository.modelo.dto.EstudianteDTO(e.nombre,e.apellido) FROM Estudiante e ";
+        TypedQuery<EstudianteDTO> query = this.entityManager.createQuery(jpql, EstudianteDTO.class);
+        return query.getResultList();
+
     }
 
 }
